@@ -1,0 +1,21 @@
+# See https://dart.dev/guides/libraries/private-files
+
+.dart_tool/
+.packages
+build/
+
+# BEGIN MANUALLY MODIFIED AFTER OPENAPI-GENERATOR RAN
+# Except for application packages
+pubspec.lock
+# END MANUALLY MODIFIED AFTER OPENAPI-GENERATOR RAN
+
+doc/api/
+
+# IntelliJ
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# Mac
+.DS_Store
