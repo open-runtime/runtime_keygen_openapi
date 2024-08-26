@@ -1,0 +1,80 @@
+diff --git a/dart/.gitignore b/dart/.gitignore
+index 1be28ce..f088c18 100644
+--- a/dart/.gitignore
++++ b/dart/.gitignore
+@@ -3,7 +3,11 @@
+ .dart_tool/
+ .packages
+ build/
+-pubspec.lock  # Except for application packages
++
++# BEGIN MANUALLY MODIFIED AFTER OPENAPI-GENERATOR RAN
++# Except for application packages
++pubspec.lock
++# END MANUALLY MODIFIED AFTER OPENAPI-GENERATOR RAN
+ 
+ doc/api/
+ 
+diff --git a/dart/lib/api.dart b/dart/lib/api.dart
+index 988bd34..0ef5244 100644
+--- a/dart/lib/api.dart
++++ b/dart/lib/api.dart
+@@ -40,6 +40,9 @@ part 'api/profiles_api.dart';
+ part 'api/second_factors_api.dart';
+ part 'api/tokens_api.dart';
+ part 'api/users_api.dart';
++// BEGIN MANUALLY MODIFIED AFTER OPENAPI-GENERATOR RAN
++part 'api/webhooks_api.dart';
++// END MANUALLY MODIFIED AFTER OPENAPI-GENERATOR RAN
+ 
+ part 'model/activate_machine_request.dart';
+ part 'model/activate_machine_request_data.dart';
+diff --git a/dart/lib/model/create_policy_request_data_attributes.dart b/dart/lib/model/create_policy_request_data_attributes.dart
+index cf9b7e7..df2f54f 100644
+--- a/dart/lib/model/create_policy_request_data_attributes.dart
++++ b/dart/lib/model/create_policy_request_data_attributes.dart
+@@ -401,18 +401,20 @@ class CreatePolicyRequestDataAttributes {
+         protected: mapValueOfType<bool>(json, r'protected'),
+         requireHeartbeat: mapValueOfType<bool>(json, r'requireHeartbeat') ?? false,
+         heartbeatDuration: mapValueOfType<int>(json, r'heartbeatDuration'),
+-        heartbeatCullStrategy: CreatePolicyRequestDataAttributesHeartbeatCullStrategyEnum.fromJson(json[r'heartbeatCullStrategy']) ?? 'DEACTIVATE_DEAD',
+-        heartbeatResurrectionStrategy: CreatePolicyRequestDataAttributesHeartbeatResurrectionStrategyEnum.fromJson(json[r'heartbeatResurrectionStrategy']) ?? 'NO_REVIVE',
++        // BEGIN MANUALLY MODIFIED AFTER OPENAPI-GENERATOR RAN
++        heartbeatCullStrategy: CreatePolicyRequestDataAttributesHeartbeatCullStrategyEnum.fromJson(json[r'heartbeatCullStrategy']) ?? CreatePolicyRequestDataAttributesHeartbeatCullStrategyEnum.DEACTIVATE_DEAD,
++        heartbeatResurrectionStrategy: CreatePolicyRequestDataAttributesHeartbeatResurrectionStrategyEnum.fromJson(json[r'heartbeatResurrectionStrategy']) ?? CreatePolicyRequestDataAttributesHeartbeatResurrectionStrategyEnum.NO_REVIVE,
+         heartbeatBasis: CreatePolicyRequestDataAttributesHeartbeatBasisEnum.fromJson(json[r'heartbeatBasis']),
+-        machineUniquenessStrategy: CreatePolicyRequestDataAttributesMachineUniquenessStrategyEnum.fromJson(json[r'machineUniquenessStrategy']) ?? 'UNIQUE_PER_LICENSE',
+-        machineMatchingStrategy: CreatePolicyRequestDataAttributesMachineMatchingStrategyEnum.fromJson(json[r'machineMatchingStrategy']) ?? 'MATCH_ANY',
+-        expirationStrategy: CreatePolicyRequestDataAttributesExpirationStrategyEnum.fromJson(json[r'expirationStrategy']) ?? 'RESTRICT_ACCESS',
+-        expirationBasis: CreatePolicyRequestDataAttributesExpirationBasisEnum.fromJson(json[r'expirationBasis']) ?? 'FROM_CREATION',
+-        transferStrategy: CreatePolicyRequestDataAttributesTransferStrategyEnum.fromJson(json[r'transferStrategy']) ?? 'KEEP_EXPIRY',
+-        authenticationStrategy: CreatePolicyRequestDataAttributesAuthenticationStrategyEnum.fromJson(json[r'authenticationStrategy']) ?? 'TOKEN',
++        machineUniquenessStrategy: CreatePolicyRequestDataAttributesMachineUniquenessStrategyEnum.fromJson(json[r'machineUniquenessStrategy']) ?? CreatePolicyRequestDataAttributesMachineUniquenessStrategyEnum.UNIQUE_PER_LICENSE,
++        machineMatchingStrategy: CreatePolicyRequestDataAttributesMachineMatchingStrategyEnum.fromJson(json[r'machineMatchingStrategy']) ?? CreatePolicyRequestDataAttributesMachineMatchingStrategyEnum.MATCH_ANY,
++        expirationStrategy: CreatePolicyRequestDataAttributesExpirationStrategyEnum.fromJson(json[r'expirationStrategy']) ?? CreatePolicyRequestDataAttributesExpirationStrategyEnum.RESTRICT_ACCESS,
++        expirationBasis: CreatePolicyRequestDataAttributesExpirationBasisEnum.fromJson(json[r'expirationBasis']) ?? CreatePolicyRequestDataAttributesExpirationBasisEnum.FROM_CREATION,
++        transferStrategy: CreatePolicyRequestDataAttributesTransferStrategyEnum.fromJson(json[r'transferStrategy']) ?? CreatePolicyRequestDataAttributesTransferStrategyEnum.KEEP_EXPIRY,
++        authenticationStrategy: CreatePolicyRequestDataAttributesAuthenticationStrategyEnum.fromJson(json[r'authenticationStrategy']) ?? CreatePolicyRequestDataAttributesAuthenticationStrategyEnum.TOKEN,
+         machineLeasingStrategy: CreatePolicyRequestDataAttributesMachineLeasingStrategyEnum.fromJson(json[r'machineLeasingStrategy']),
+         processLeasingStrategy: CreatePolicyRequestDataAttributesProcessLeasingStrategyEnum.fromJson(json[r'processLeasingStrategy']),
+-        overageStrategy: CreatePolicyRequestDataAttributesOverageStrategyEnum.fromJson(json[r'overageStrategy']) ?? 'NO_OVERAGE',
++        overageStrategy: CreatePolicyRequestDataAttributesOverageStrategyEnum.fromJson(json[r'overageStrategy']) ?? CreatePolicyRequestDataAttributesOverageStrategyEnum.NO_OVERAGE,
++        // END MANUALLY MODIFIED AFTER OPENAPI-GENERATOR RAN
+         metadata: mapValueOfType<Object>(json, r'metadata'),
+       );
+     }
+diff --git a/dart/lib/model/create_product_request_data_attributes.dart b/dart/lib/model/create_product_request_data_attributes.dart
+index d081e59..8012d31 100644
+--- a/dart/lib/model/create_product_request_data_attributes.dart
++++ b/dart/lib/model/create_product_request_data_attributes.dart
+@@ -90,7 +90,9 @@ class CreateProductRequestDataAttributes {
+       return CreateProductRequestDataAttributes(
+         name: mapValueOfType<String>(json, r'name')!,
+         url: mapValueOfType<String>(json, r'url'),
+-        distributionStrategy: CreateProductRequestDataAttributesDistributionStrategyEnum.fromJson(json[r'distributionStrategy']) ?? 'LICENSED',
++        // BEGIN MANUALLY MODIFIED AFTER OPENAPI-GENERATOR RAN
++        distributionStrategy: CreateProductRequestDataAttributesDistributionStrategyEnum.fromJson(json[r'distributionStrategy']) ?? CreateProductRequestDataAttributesDistributionStrategyEnum.LICENSED,
++        // END MANUALLY MODIFIED AFTER OPENAPI-GENERATOR RAN
+         platforms: json[r'platforms'] is Iterable
+             ? (json[r'platforms'] as Iterable).cast<String>().toList(growable: false)
+             : const [],
