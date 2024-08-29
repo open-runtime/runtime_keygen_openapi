@@ -51,7 +51,7 @@ rm -rf dart
 
 openapi-generator-cli generate -i keygen-openapi.yml -g dart -o dart --global-property modelDocs=false,modelTests=false,apiDocs=false,apiTests=false --additional-properties removeEnumValuePrefix=false --additional-properties pubName=runtime_keygen_openapi --additional-properties pubHomepage=https://github.com/open-runtime/runtime_keygen_openapi --additional-properties pubDescription='A\ Dart\ package\ for\ Keygen\ \(keygen.sh\)\ OpenAPI\ bindings'
 
-git apply manual-fix-after-openapi-generator.patch
+git apply --whitespace=nowarn manual-fix-after-openapi-generator.patch
 ```
 
 ### Why is the .patch needed?

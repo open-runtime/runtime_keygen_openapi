@@ -13,7 +13,6 @@ lib/api/passwords_api.dart
 lib/api/policies_api.dart
 lib/api/processes_api.dart
 lib/api/products_api.dart
-lib/api/profiles_api.dart
 lib/api/second_factors_api.dart
 lib/api/tokens_api.dart
 lib/api/users_api.dart
@@ -222,7 +221,6 @@ lib/model/retrieve_machine_response.dart
 lib/model/retrieve_policy_response.dart
 lib/model/retrieve_process_response.dart
 lib/model/retrieve_product_response.dart
-lib/model/retrieve_profile_response.dart
 lib/model/retrieve_second_factor_response.dart
 lib/model/retrieve_token_response.dart
 lib/model/retrieve_user_response.dart

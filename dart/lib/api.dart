@@ -36,7 +36,9 @@ part 'api/passwords_api.dart';
 part 'api/policies_api.dart';
 part 'api/processes_api.dart';
 part 'api/products_api.dart';
+// BEGIN MANUALLY MODIFIED AFTER OPENAPI-GENERATOR RAN
 part 'api/profiles_api.dart';
+// END MANUALLY MODIFIED AFTER OPENAPI-GENERATOR RAN
 part 'api/second_factors_api.dart';
 part 'api/tokens_api.dart';
 part 'api/users_api.dart';
@@ -240,7 +242,9 @@ part 'model/retrieve_machine_response.dart';
 part 'model/retrieve_policy_response.dart';
 part 'model/retrieve_process_response.dart';
 part 'model/retrieve_product_response.dart';
+// BEGIN MANUALLY MODIFIED AFTER OPENAPI-GENERATOR RAN
 part 'model/retrieve_profile_response.dart';
+// END MANUALLY MODIFIED AFTER OPENAPI-GENERATOR RAN
 part 'model/retrieve_second_factor_response.dart';
 part 'model/retrieve_token_response.dart';
 part 'model/retrieve_user_response.dart';

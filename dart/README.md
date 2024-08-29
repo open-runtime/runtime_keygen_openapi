@@ -138,7 +138,6 @@ Class | Method | HTTP request | Description
 *ProductsApi* | [**listProducts**](doc//ProductsApi.md#listproducts) | **GET** /accounts/{account}/products | List all products
 *ProductsApi* | [**retrieveProduct**](doc//ProductsApi.md#retrieveproduct) | **GET** /accounts/{account}/products/{product} | Retrieve a product
 *ProductsApi* | [**updateProduct**](doc//ProductsApi.md#updateproduct) | **PATCH** /accounts/{account}/products/{product} | Update a product
-*ProfilesApi* | [**retrieveProfile**](doc//ProfilesApi.md#retrieveprofile) | **GET** /accounts/{account}/me | Who Am I?
 *SecondFactorsApi* | [**addSecondFactor**](doc//SecondFactorsApi.md#addsecondfactor) | **POST** /accounts/{account}/users/{user}/second-factors | Add a second factor
 *SecondFactorsApi* | [**deleteSecondFactor**](doc//SecondFactorsApi.md#deletesecondfactor) | **DELETE** /accounts/{account}/users/{user}/second-factors/{second-factor} | Delete a second factor
 *SecondFactorsApi* | [**listSecondFactors**](doc//SecondFactorsApi.md#listsecondfactors) | **GET** /accounts/{account}/users/{user}/second-factors | List second factors
@@ -360,7 +359,6 @@ Class | Method | HTTP request | Description
  - [RetrievePolicyResponse](doc//RetrievePolicyResponse.md)
  - [RetrieveProcessResponse](doc//RetrieveProcessResponse.md)
  - [RetrieveProductResponse](doc//RetrieveProductResponse.md)
- - [RetrieveProfileResponse](doc//RetrieveProfileResponse.md)
  - [RetrieveSecondFactorResponse](doc//RetrieveSecondFactorResponse.md)
  - [RetrieveTokenResponse](doc//RetrieveTokenResponse.md)
  - [RetrieveUserResponse](doc//RetrieveUserResponse.md)

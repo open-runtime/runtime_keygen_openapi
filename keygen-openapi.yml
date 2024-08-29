@@ -4724,33 +4724,6 @@ paths:
                   - data
         default:
           $ref: "#/components/responses/Error"
-  /accounts/{account}/me:
-    get:
-      tags:
-        - Profiles
-      operationId: retrieveProfile
-      summary: Who Am I?
-      description: |
-        Retrieves the details of the currently authenticated bearer i.e. the resource who the current API token belongs
-        to. Utilize this to determine who the current user is, what token they used, to retrieve information on who made
-        the API request.
-      parameters:
-        - $ref: "#/components/parameters/Account"
-      responses:
-        "200":
-          description: Profile retrieved successfully
-          content:
-            application/vnd.api+json:
-              schema:
-                title: RetrieveProfileResponse
-                type: object
-                properties:
-                  data:
-                    $ref: "#/components/schemas/User"
-                required:
-                  - data
-        default:
-          $ref: "#/components/responses/Error"
   /accounts/{account}/passwords:
     post:
       tags:
