@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 .travis.yml
 README.md
 analysis_options.yaml
@@ -310,4 +309,3 @@ lib/model/webhook_event.dart
 lib/model/webhook_event_attributes.dart
 lib/model/webhook_event_relationships.dart
 lib/model/webhook_event_relationships_account.dart
-pubspec.yaml
