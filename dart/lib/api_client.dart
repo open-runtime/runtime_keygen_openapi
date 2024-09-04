@@ -574,8 +574,10 @@ class ApiClient {
           return RetrieveProcessResponse.fromJson(value);
         case 'RetrieveProductResponse':
           return RetrieveProductResponse.fromJson(value);
+        // BEGIN MANUALLY MODIFIED AFTER OPENAPI-GENERATOR RAN
         case 'RetrieveProfileResponse':
           return RetrieveProfileResponse.fromJson(value);
+        // END MANUALLY MODIFIED AFTER OPENAPI-GENERATOR RAN
         case 'RetrieveSecondFactorResponse':
           return RetrieveSecondFactorResponse.fromJson(value);
         case 'RetrieveTokenResponse':
