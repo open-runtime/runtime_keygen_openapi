@@ -16,10 +16,16 @@ index 1be28ce..f088c18 100644
  doc/api/
  
 diff --git a/dart/lib/api.dart b/dart/lib/api.dart
-index 988bd34..0ef5244 100644
+index 964df88..e251830 100644
 --- a/dart/lib/api.dart
 +++ b/dart/lib/api.dart
-@@ -40,6 +40,9 @@ part 'api/profiles_api.dart';
+@@ -36,9 +36,15 @@ part 'api/passwords_api.dart';
+ part 'api/policies_api.dart';
+ part 'api/processes_api.dart';
+ part 'api/products_api.dart';
++// BEGIN MANUALLY MODIFIED AFTER OPENAPI-GENERATOR RAN
++part 'api/profiles_api.dart';
++// END MANUALLY MODIFIED AFTER OPENAPI-GENERATOR RAN
  part 'api/second_factors_api.dart';
  part 'api/tokens_api.dart';
  part 'api/users_api.dart';
@@ -29,6 +35,114 @@ index 988bd34..0ef5244 100644
  
  part 'model/activate_machine_request.dart';
  part 'model/activate_machine_request_data.dart';
+@@ -236,6 +242,9 @@ part 'model/retrieve_machine_response.dart';
+ part 'model/retrieve_policy_response.dart';
+ part 'model/retrieve_process_response.dart';
+ part 'model/retrieve_product_response.dart';
++// BEGIN MANUALLY MODIFIED AFTER OPENAPI-GENERATOR RAN
++part 'model/retrieve_profile_response.dart';
++// END MANUALLY MODIFIED AFTER OPENAPI-GENERATOR RAN
+ part 'model/retrieve_second_factor_response.dart';
+ part 'model/retrieve_token_response.dart';
+ part 'model/retrieve_user_response.dart';
+diff --git a/dart/lib/api/profiles_api.dart b/dart/lib/api/profiles_api.dart
+new file mode 100644
+index 0000000..2d57583
+--- /dev/null
++++ b/dart/lib/api/profiles_api.dart
+@@ -0,0 +1,77 @@
++//
++// MANUALLY ADDED AFTER OPENAPI-GENERATOR RAN
++//
++// @dart=2.12
++
++// ignore_for_file: unused_element, unused_import
++// ignore_for_file: always_put_required_named_parameters_first
++// ignore_for_file: constant_identifier_names
++// ignore_for_file: lines_longer_than_80_chars
++
++part of openapi.api;
++
++
++class ProfilesApi {
++  ProfilesApi([ApiClient? apiClient]) : apiClient = apiClient ?? defaultApiClient;
++
++  final ApiClient apiClient;
++
++  /// Who Am I?
++  ///
++  /// Retrieves the details of the currently authenticated bearer i.e. the resource who the current API token belongs to. Utilize this to determine who the current user is, what token they used, to retrieve information on who made the API request. 
++  ///
++  /// Note: This method returns the HTTP [Response].
++  ///
++  /// Parameters:
++  ///
++  /// * [String] account (required):
++  ///   The identifier (UUID) or slug of your Keygen account.
++  Future<Response> retrieveProfileWithHttpInfo(String account,) async {
++    // ignore: prefer_const_declarations
++    final path = r'/accounts/{account}/me'
++      .replaceAll('{account}', account);
++
++    // ignore: prefer_final_locals
++    Object? postBody;
++
++    final queryParams = <QueryParam>[];
++    final headerParams = <String, String>{};
++    final formParams = <String, String>{};
++
++    const contentTypes = <String>[];
++
++
++    return apiClient.invokeAPI(
++      path,
++      'GET',
++      queryParams,
++      postBody,
++      headerParams,
++      formParams,
++      contentTypes.isEmpty ? null : contentTypes.first,
++    );
++  }
++
++  /// Who Am I?
++  ///
++  /// Retrieves the details of the currently authenticated bearer i.e. the resource who the current API token belongs to. Utilize this to determine who the current user is, what token they used, to retrieve information on who made the API request. 
++  ///
++  /// Parameters:
++  ///
++  /// * [String] account (required):
++  ///   The identifier (UUID) or slug of your Keygen account.
++  Future<RetrieveProfileResponse?> retrieveProfile(String account,) async {
++    final response = await retrieveProfileWithHttpInfo(account,);
++    if (response.statusCode >= HttpStatus.badRequest) {
++      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
++    }
++    // When a remote server returns no body with a status of 204, we shall not decode it.
++    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
++    // FormatException when trying to decode an empty string.
++    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
++      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'RetrieveProfileResponse',) as RetrieveProfileResponse;
++    
++    }
++    return null;
++  }
++}
+diff --git a/dart/lib/api_client.dart b/dart/lib/api_client.dart
+index 6369ee3..7a22598 100644
+--- a/dart/lib/api_client.dart
++++ b/dart/lib/api_client.dart
+@@ -574,6 +574,10 @@ class ApiClient {
+           return RetrieveProcessResponse.fromJson(value);
+         case 'RetrieveProductResponse':
+           return RetrieveProductResponse.fromJson(value);
++        // BEGIN MANUALLY MODIFIED AFTER OPENAPI-GENERATOR RAN
++        case 'RetrieveProfileResponse':
++          return RetrieveProfileResponse.fromJson(value);
++        // END MANUALLY MODIFIED AFTER OPENAPI-GENERATOR RAN
+         case 'RetrieveSecondFactorResponse':
+           return RetrieveSecondFactorResponse.fromJson(value);
+         case 'RetrieveTokenResponse':
 diff --git a/dart/lib/model/create_policy_request_data_attributes.dart b/dart/lib/model/create_policy_request_data_attributes.dart
 index cf9b7e7..df2f54f 100644
 --- a/dart/lib/model/create_policy_request_data_attributes.dart
@@ -78,3 +192,149 @@ index d081e59..8012d31 100644
          platforms: json[r'platforms'] is Iterable
              ? (json[r'platforms'] as Iterable).cast<String>().toList(growable: false)
              : const [],
+diff --git a/dart/lib/model/retrieve_profile_response.dart b/dart/lib/model/retrieve_profile_response.dart
+new file mode 100644
+index 0000000..17348f9
+--- /dev/null
++++ b/dart/lib/model/retrieve_profile_response.dart
+@@ -0,0 +1,140 @@
++//
++// MANUALLY ADDED AFTER OPENAPI-GENERATOR RAN
++//
++// @dart=2.12
++
++// ignore_for_file: unused_element, unused_import
++// ignore_for_file: always_put_required_named_parameters_first
++// ignore_for_file: constant_identifier_names
++// ignore_for_file: lines_longer_than_80_chars
++
++part of openapi.api;
++
++class RetrieveProfileResponse {
++  /// Returns a new [RetrieveProfileResponse] instance.
++  RetrieveProfileResponse({
++    required this.data,
++  });
++
++  dynamic data;
++
++  @override
++  bool operator ==(Object other) => identical(this, other) || other is RetrieveProfileResponse &&
++    other.data == data;
++
++  @override
++  int get hashCode =>
++    // ignore: unnecessary_parenthesis
++    (data.hashCode);
++
++  @override
++  String toString() => 'RetrieveProfileResponse[data=$data]';
++
++  Map<String, dynamic> toJson() {
++    final json = <String, dynamic>{};
++      json[r'data'] = this.data;
++    return json;
++  }
++
++  /// Returns a new [RetrieveProfileResponse] instance and imports its values from
++  /// [value] if it's a [Map], null otherwise.
++  // ignore: prefer_constructors_over_static_methods
++  static RetrieveProfileResponse? fromJson(dynamic value) {
++    if (value is Map) {
++      final json = value.cast<String, dynamic>();
++
++      // Ensure that the map contains the required keys.
++      // Note 1: the values aren't checked for validity beyond being non-null.
++      // Note 2: this code is stripped in release mode!
++      assert(() {
++        requiredKeys.forEach((key) {
++          assert(json.containsKey(key), 'Required key "RetrieveProfileResponse[$key]" is missing from JSON.');
++          assert(json[key] != null, 'Required key "RetrieveProfileResponse[$key]" has a null value in JSON.');
++        });
++        return true;
++      }());
++
++      //
++      // Why not use switch?
++      //
++      // trying to do:
++      //
++      // switch (type) {
++      //   case UserTypeEnum.users.toString():
++      //     break;
++      // }
++      //
++      // gives "Methods can't be invoked in constant expressions." error
++      //
++
++      String type = json[r'data'][r'type'];
++
++      if (type == UserTypeEnum.users.toString()) {
++
++        return RetrieveProfileResponse(
++          data: User.fromJson(json[r'data'])!,
++        );
++
++      } else if (type == LicenseTypeEnum.licenses.toString()) {
++
++        return RetrieveProfileResponse(
++          data: License.fromJson(json[r'data'])!,
++        );
++
++      } else if (type == ProductTypeEnum.products.toString()) {
++
++        return RetrieveProfileResponse(
++          data: Product.fromJson(json[r'data'])!,
++        );
++
++      }
++    }
++    return null;
++  }
++
++  static List<RetrieveProfileResponse> listFromJson(dynamic json, {bool growable = false,}) {
++    final result = <RetrieveProfileResponse>[];
++    if (json is List && json.isNotEmpty) {
++      for (final row in json) {
++        final value = RetrieveProfileResponse.fromJson(row);
++        if (value != null) {
++          result.add(value);
++        }
++      }
++    }
++    return result.toList(growable: growable);
++  }
++
++  static Map<String, RetrieveProfileResponse> mapFromJson(dynamic json) {
++    final map = <String, RetrieveProfileResponse>{};
++    if (json is Map && json.isNotEmpty) {
++      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
++      for (final entry in json.entries) {
++        final value = RetrieveProfileResponse.fromJson(entry.value);
++        if (value != null) {
++          map[entry.key] = value;
++        }
++      }
++    }
++    return map;
++  }
++
++  // maps a json object with a list of RetrieveProfileResponse-objects as value to a dart map
++  static Map<String, List<RetrieveProfileResponse>> mapListFromJson(dynamic json, {bool growable = false,}) {
++    final map = <String, List<RetrieveProfileResponse>>{};
++    if (json is Map && json.isNotEmpty) {
++      // ignore: parameter_assignments
++      json = json.cast<String, dynamic>();
++      for (final entry in json.entries) {
++        map[entry.key] = RetrieveProfileResponse.listFromJson(entry.value, growable: growable,);
++      }
++    }
++    return map;
++  }
++
++  /// The list of required keys that must be present in a JSON.
++  static const requiredKeys = <String>{
++    'data',
++  };
++}
++

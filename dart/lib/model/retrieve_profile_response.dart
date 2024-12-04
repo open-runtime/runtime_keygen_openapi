@@ -1,5 +1,5 @@
 //
-// AUTO-GENERATED FILE, DO NOT MODIFY!
+// MANUALLY ADDED AFTER OPENAPI-GENERATOR RAN
 //
 // @dart=2.12
 
@@ -16,7 +16,7 @@ class RetrieveProfileResponse {
     required this.data,
   });
 
-  User data;
+  dynamic data;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is RetrieveProfileResponse &&
@@ -54,9 +54,40 @@ class RetrieveProfileResponse {
         return true;
       }());
 
-      return RetrieveProfileResponse(
-        data: User.fromJson(json[r'data'])!,
-      );
+      //
+      // Why not use switch?
+      //
+      // trying to do:
+      //
+      // switch (type) {
+      //   case UserTypeEnum.users.toString():
+      //     break;
+      // }
+      //
+      // gives "Methods can't be invoked in constant expressions." error
+      //
+
+      String type = json[r'data'][r'type'];
+
+      if (type == UserTypeEnum.users.toString()) {
+
+        return RetrieveProfileResponse(
+          data: User.fromJson(json[r'data'])!,
+        );
+
+      } else if (type == LicenseTypeEnum.licenses.toString()) {
+
+        return RetrieveProfileResponse(
+          data: License.fromJson(json[r'data'])!,
+        );
+
+      } else if (type == ProductTypeEnum.products.toString()) {
+
+        return RetrieveProfileResponse(
+          data: Product.fromJson(json[r'data'])!,
+        );
+
+      }
     }
     return null;
   }
